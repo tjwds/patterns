@@ -18,7 +18,12 @@ for number in range(width):
 
 # function to determine whether or not all elements of a list are equal
 def listEqual(list):
-    return list == list[::-1]
+    caseSwitch = True # bad practice but I don't know how switches work in python
+    for x in list:
+        if x != list[0]:
+            caseSwitch = False
+    return caseSwitch
+    # return list == list[::-1] # this was a bad idea that is obviously incorrect
 
 # evaluate success by process of elimination
 thisPossible = [[2, 1, 1], [2, 2, 1]] # random example
