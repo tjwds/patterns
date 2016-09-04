@@ -15,18 +15,28 @@ for number in range(width):
     successArray.append([0] * width)
 
 # evaluation of possible goals
-thisRowInput = 2
+thisRowInput = [2]
+
+''' next step:  make this evaluate possible expressions for multiple inputs '''
+def evaluateExpression(thisInput):
+    thisExpression = []
+    for z in range(thisInput):
+        thisExpression.append(1)
+    return thisExpression
 
 def evaluatePossibleGoals(thisRowInput):
-    numberOfOptions = width + 1 - thisRowInput
+    holdThisInput = thisRowInput[0]
+    numberOfOptions = width + 1 - holdThisInput
     paddingInBeginning = 0
     thisPossible = []
+    ''' all of this is going to have to wiggle based off of mulitple possible expressions '''
+    thisExpression = evaluateExpression(holdThisInput)
     for x in range(numberOfOptions):
         thisPossibleStage = []
         for y in range(paddingInBeginning):
             thisPossibleStage.append(2)
-        for z in range(thisRowInput):
-            thisPossibleStage.append(1)
+        for alpha in thisExpression:
+            thisPossibleStage.append(alpha)
         while len(thisPossibleStage) != width:
             thisPossibleStage.append(2)
         paddingInBeginning += 1
