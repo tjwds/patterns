@@ -15,6 +15,26 @@ for number in range(width):
     successArray.append([0] * width)
 
 # evaluation of possible goals
+thisRowInput = 2
+
+def evaluatePossibleGoals(thisRowInput):
+    numberOfOptions = width + 1 - thisRowInput
+    paddingInBeginning = 0
+    thisPossible = []
+    for x in range(numberOfOptions):
+        thisPossibleStage = []
+        for y in range(paddingInBeginning):
+            thisPossibleStage.append(2)
+        for z in range(thisRowInput):
+            thisPossibleStage.append(1)
+        while len(thisPossibleStage) != width:
+            thisPossibleStage.append(2)
+        paddingInBeginning += 1
+        thisPossible.append(thisPossibleStage)
+    return thisPossible
+
+thisPossible = evaluatePossibleGoals(thisRowInput)
+print(thisPossible)
 
 # function to determine whether or not all elements of a list are equal
 def listEqual(list):
@@ -26,7 +46,8 @@ def listEqual(list):
     # return list == list[::-1] # this was a bad idea that is obviously incorrect
 
 # evaluate success by process of elimination
-thisPossible = [[2, 1, 1], [2, 2, 1]] # random example
+
+# thisPossible = [[2, 1, 1], [2, 2, 1]] # random example
 thisSuccessArray = [0] * width # this will need to grab from successArray later
 thisSuccessHold = []
 numPossibilities = len(thisPossible)
